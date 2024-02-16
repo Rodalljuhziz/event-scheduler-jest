@@ -1,6 +1,7 @@
 import Event from "../src/models";
 import EventRepository from "../src/repository";
 import EventService from "../src/services";
+import * as events from "events";
 jest.mock("../src/repository");
 
 
@@ -31,5 +32,20 @@ describe("Event Service",()=> {
     test('getEvents shall return 4 result', async () => {
         let eventService = new EventService(new EventRepository());
         expect(eventService.getEvents().length).toBe(3);
+    })
+
+    test('get first event', async () =>{
+        let eventServices = new EventService(new EventRepository());
+        expect(eventServices.getFirstEvent()).toEqual(fakeEvents[1]);
+    })
+
+    test('get Last Event', async()=> {
+        let eventServices = new EventService(new EventRepository());
+        expect(eventServices.getLastEvent()).toEqual(fakeEvents[2]);
+    })
+
+    test('get Longest Event', async()=>{
+        let eventServices = new EventService(new EventRepository());
+        expect(eventServices.getLongestEvent()).toEqual(fakeEvents[0]);
     })
 });

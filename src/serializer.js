@@ -16,6 +16,7 @@ export default class EventSerializer {
      * @param {string} event
      */
     unserialize(event){
-        return []; //TODO
+        const obj = JSON.parse(event);
+        return [obj]; //TODO maybe
     }
 }

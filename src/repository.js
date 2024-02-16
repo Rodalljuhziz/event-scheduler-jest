@@ -16,6 +16,8 @@ export default class EventRepository {
      * @return Event[]
      */
     getAll(){
+
+
         return []; //TODO
     }
 

@@ -1,7 +1,11 @@
 
 import EventRepository from "./repository";
 import Event from "./models";
-
+let fakeEvents = [
+    new Event(new Date('2019-12-17T03:24:00'),new Date('2019-12-17T13:24:00'),"Hello World","Campus Numerique","This is an hello world.."),
+    new Event(new Date('2018-12-17T03:24:00'),new Date('1995-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world.."),
+    new Event(new Date('2020-04-01T09:00:00'),new Date('2020-04-01T17:00:00'),"Unit test againt","Campus Numerique","This is an hello world..")
+];
 export default class EventService {
 
     /**
@@ -31,7 +35,15 @@ export default class EventService {
      * @return {null | Event}
      */
     getFirstEvent() {
-        return null; //TODO
+        let myTab = fakeEvents;
+         for(let i = 0; i < fakeEvents.length; i++)
+         {
+            if(myTab[0]["startTime"] > fakeEvents[i]["startTime"])
+            {
+                myTab[0] = fakeEvents[i];
+            }
+         }
+        return myTab[0];// Done
     }
 
     /**
@@ -39,7 +51,15 @@ export default class EventService {
      * @return {null | Event}
      */
     getLastEvent() {
-        return null; //TODO
+        let myTab = fakeEvents;
+        for(let i = 0; i < fakeEvents.length; i++)
+        {
+            if(myTab[0]["startTime"] < fakeEvents[i]["startTime"])
+            {
+                myTab[0] = fakeEvents[i];
+            }
+        }
+        return myTab[0];// Done
     }
 
     /**
@@ -47,7 +67,15 @@ export default class EventService {
      * @return {null | Event}
      */
     getLongestEvent() {
-        return null; //TODO
+        let myTab = fakeEvents;
+        for(let i = 0; i < fakeEvents.length; i++)
+        {
+            if((myTab[0]["startTime"] - myTab[0]["endTime"])  > ( fakeEvents[i]["startTime"], fakeEvents[i]["endTime"]))
+            {
+                myTab[0] = fakeEvents[i];
+            }
+        }
+        return myTab[0];// Done
     }
 
     /**
@@ -55,7 +83,15 @@ export default class EventService {
      * @return {null | Event}
      */
     getShortestEvent() {
-        return null; //TODO
+        let myTab = fakeEvents;
+        for(let i = 0; i < fakeEvents.length; i++)
+        {
+            if((myTab[0]["startTime"] - myTab[0]["endTime"])  < ( fakeEvents[i]["startTime"], fakeEvents[i]["endTime"]))
+            {
+                myTab[0] = fakeEvents[i];
+            }
+        }
+        return myTab[0];// Done
     }
 
     // A implementer en TDD
